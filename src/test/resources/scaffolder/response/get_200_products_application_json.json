@@ -1,0 +1,14 @@
+[
+  {
+    "productCode": "TS",
+    "size": "S",
+    "description": "Small T-shirt",
+    "count": 30
+  },
+  {
+    "productCode": "TS",
+    "size": "M",
+    "description": "Medium T-shirt",
+    "count": 22
+  }
+]
