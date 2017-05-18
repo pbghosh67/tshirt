@@ -1,13 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<mule xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns:mock="http://www.mulesoft.org/schema/mule/mock" xmlns:munit="http://www.mulesoft.org/schema/mule/munit" xmlns:spring="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd http://www.mulesoft.org/schema/mule/munit http://www.mulesoft.org/schema/mule/munit/current/mule-munit.xsd http://www.mulesoft.org/schema/mule/mock http://www.mulesoft.org/schema/mule/mock/current/mule-mock.xsd ">
+<mule xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns:mock="http://www.mulesoft.org/schema/mule/mock" xmlns:munit="http://www.mulesoft.org/schema/mule/munit" xmlns:spring="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/munit http://www.mulesoft.org/schema/mule/munit/current/mule-munit.xsd
+http://www.mulesoft.org/schema/mule/mock http://www.mulesoft.org/schema/mule/mock/current/mule-mock.xsd">
+
+    <munit:config mock-connectors="false" mock-inbounds="false" doc:name="MUnit configuration"/>
     <spring:beans>
         <spring:import resource="classpath:t-shirt.xml" />
     </spring:beans>
-    <munit:config mock-connectors="false" mock-inbounds="false" />
-    <http:request-config name="HTTP_Request_Configuration" host="localhost" port="8081" basePath="/api" />
+
+    <http:request-config name="HTTP_Request_Configuration" host="localhost" port="8081" basePath="/api" doc:name="HTTP Request Configuration"/>
     <munit:test name="get:/products:api-config-200-application/json-FlowTest" description="Verifying functionality of [get:/products:api-config-200-application/json]">
         <set-variable variableName="email" value="#['']" doc:name="email" />
-        <http:request config-ref="HTTP_Request_Configuration" method="GET" path="/products">
+        <http:request config-ref="HTTP_Request_Configuration" method="GET" path="/products" doc:name="HTTP">
             <http:request-builder>
                 <http:header headerName="Accept" value="application/json" />
                 <http:query-param paramName="email" value="#[flowVars['email']]" />
@@ -19,7 +25,7 @@
     </munit:test>
     <munit:test name="get:/orders/orderId/status:api-config-200-application/json-FlowTest" description="Verifying functionality of [get:/orders/orderId/status:api-config-200-application/json]">
         <set-variable variableName="email" value="#['']" doc:name="email" />
-        <http:request config-ref="HTTP_Request_Configuration" method="GET" path="/orders/{orderId}/status">
+        <http:request config-ref="HTTP_Request_Configuration" method="GET" path="/orders/{orderId}/status" doc:name="HTTP">
             <http:request-builder>
                 <http:header headerName="Accept" value="application/json" />
                 <http:query-param paramName="email" value="#[flowVars['email']]" />
@@ -31,7 +37,7 @@
     </munit:test>
     <munit:test name="get:/orders/orderId/status:api-config-400-application/json-FlowTest" description="Verifying functionality of [get:/orders/orderId/status:api-config-400-application/json]">
         <set-variable variableName="email" value="#['']" doc:name="email" />
-        <http:request config-ref="HTTP_Request_Configuration" method="GET" path="/orders/{orderId}/status">
+        <http:request config-ref="HTTP_Request_Configuration" method="GET" path="/orders/{orderId}/status" doc:name="HTTP">
             <http:request-builder>
                 <http:header headerName="Accept" value="application/json" />
                 <http:query-param paramName="email" value="#[flowVars['email']]" />
@@ -43,8 +49,8 @@
         <munit:assert-on-equals message="The response payload is not correct!" expectedValue="#[getResource('scaffolder/response/get_400_orders_{orderid}_status_application_json.json').asString()]" actualValue="#[payload]" doc:name="assert that - payload is as expected" />
     </munit:test>
     <munit:test name="post:/orders:application/json:api-config-200-application/json-FlowTest" description="Verifying functionality of [post:/orders:application/json:api-config-200-application/json]">
-        <set-payload value="#[getResource('scaffolder/request/post_orders_application_json.json').asString()]" />
-        <http:request config-ref="HTTP_Request_Configuration" method="POST" path="/orders">
+        <set-payload value="#[getResource('scaffolder/request/post_orders_application_json.json').asString()]" doc:name="Set Payload"/>
+        <http:request config-ref="HTTP_Request_Configuration" method="POST" path="/orders" doc:name="HTTP">
             <http:request-builder>
                 <http:header headerName="Accept" value="application/json" />
                 <http:header headerName="Content-Type" value="application/json" />
@@ -55,8 +61,8 @@
         <munit:assert-on-equals message="The response payload is not correct!" expectedValue="#[getResource('scaffolder/response/post_200_orders_application_json.json').asString()]" actualValue="#[payload]" doc:name="assert that - payload is as expected" />
     </munit:test>
     <munit:test name="post:/orders:application/json:api-config-500-application/json-FlowTest" description="Verifying functionality of [post:/orders:application/json:api-config-500-application/json]">
-        <set-payload value="#[getResource('scaffolder/request/post_orders_application_json.json').asString()]" />
-        <http:request config-ref="HTTP_Request_Configuration" method="POST" path="/orders">
+        <set-payload value="#[getResource('scaffolder/request/post_orders_application_json.json').asString()]" doc:name="Set Payload"/>
+        <http:request config-ref="HTTP_Request_Configuration" method="POST" path="/orders" doc:name="HTTP">
             <http:request-builder>
                 <http:header headerName="Accept" value="application/json" />
                 <http:header headerName="Content-Type" value="application/json" />

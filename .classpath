@@ -34,12 +34,12 @@
       <attribute value="test" name="org.mule.tooling.scope"/>
     </attributes>
   </classpathentry>
-  <classpathentry kind="var" path="M2_REPO/com/mulesoft/modules/mule-interceptor-module/3.8.3/mule-interceptor-module-3.8.3.jar">
+  <classpathentry kind="var" path="M2_REPO/com/mulesoft/modules/mule-interceptor-module/3.6.2/mule-interceptor-module-3.6.2.jar">
     <attributes>
       <attribute value="test" name="org.mule.tooling.scope"/>
     </attributes>
   </classpathentry>
-  <classpathentry kind="var" path="M2_REPO/com/mulesoft/munit/mule-munit-support/3.8.3/mule-munit-support-3.8.3.jar">
+  <classpathentry kind="var" path="M2_REPO/com/mulesoft/munit/mule-munit-support/3.6.2/mule-munit-support-3.6.2.jar">
     <attributes>
       <attribute value="test" name="org.mule.tooling.scope"/>
     </attributes>
