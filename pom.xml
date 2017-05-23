@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.mycompany</groupId>
 	<artifactId>my-raml-implementation</artifactId>
-	<version>1.0.0</version>
+	<version>1.0.1-SNAPSHOT</version>
 	<packaging>mule</packaging>
 	<name>Mule TShirt API Application</name>
 
@@ -20,7 +20,7 @@
 	<scm>
 		<connection>scm:git:https://github.com/pbghosh67/tshirt</connection>
 		<developerConnection>scm:git:https://github.com/pbghosh67/tshirt</developerConnection>
-	  <tag>v1.0.0</tag>
+	  <tag>HEAD</tag>
   </scm>
 	<distributionManagement>
 		<repository>
