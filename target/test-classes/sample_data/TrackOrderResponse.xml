@@ -1,6 +1,0 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<ns0:TrackOrderResponse xmlns:ns0="http://mulesoft.org/tshirt-service">
-  <orderId>2344</orderId>
-  <status>????</status>
-  <size>????</size>
-</ns0:TrackOrderResponse>

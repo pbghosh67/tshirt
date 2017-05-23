@@ -1,7 +1,0 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<ns0:ListInventoryResponse xmlns:ns0="http://mulesoft.org/tshirt-service">
-  <inventory>
-    <productCode>????</productCode>
-    <size>????</size>
-  </inventory>
-</ns0:ListInventoryResponse>
