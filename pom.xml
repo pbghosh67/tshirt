@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.mycompany</groupId>
 	<artifactId>my-raml-implementation</artifactId>
@@ -18,6 +17,22 @@
 		<mule.munit.support.version>3.8.3</mule.munit.support.version>
 	</properties>
 
+	<scm>
+		<connection>scm:git:https://github.com/pbghosh67/tshirt</connection>
+		<developerConnection>scm:git:https://github.com/pbghosh67/tshirt</developerConnection>
+	</scm>
+	<distributionManagement>
+		<repository>
+			<id>gitrepo</id>
+			<name>Local file system</name>
+			<url>file:///e:/gitRepo/repo</url>
+		</repository>
+		<snapshotRepository>
+			<id>gitsnapshotrepo</id>
+			<name>Local file system</name>
+			<url>file:///e:/gitRepo/snapshots</url>
+		</snapshotRepository>
+	</distributionManagement>
 	<build>
 		<plugins>
 			<plugin>
@@ -29,7 +44,6 @@
 					<!-- <copyToAppsDirectory>true</copyToAppsDirectory> -->
 				</configuration>
 			</plugin>
-
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>build-helper-maven-plugin</artifactId>
@@ -174,6 +188,12 @@
 			<artifactId>munit-runner</artifactId>
 			<version>${munit.version}</version>
 			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.maven.plugins</groupId>
+			<artifactId>maven-release-plugin</artifactId>
+			<version>2.5.3</version>
+			<type>maven-plugin</type>
 		</dependency>
 	</dependencies>
 
