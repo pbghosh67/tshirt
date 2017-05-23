@@ -63,6 +63,7 @@
 				<configuration>
 					<deploymentType>standalone</deploymentType>
 					<muleVersion>3.8.4</muleVersion>
+					<muleHome>/mule-enterprise-standalone-3.8.4</muleHome>
 				</configuration>
 				<executions>
 					<execution>
